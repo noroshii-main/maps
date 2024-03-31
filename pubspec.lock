@@ -68,6 +68,15 @@ packages:
       url: "https://github.com/noroshii-main/mapbox-gl-dart.git"
     source: git
     version: "0.2.1"
+  mapbox_gl_language_dart:
+    dependency: transitive
+    description:
+      path: "."
+      ref: main
+      resolved-ref: fca0ac90485824df5fc21954849fac1eea611b5f
+      url: "https://github.com/noroshii-main/mapbox-gl-language-dart.git"
+    source: git
+    version: "1.0.0"
   mapbox_gl_platform_interface:
     dependency: "direct main"
     description:
