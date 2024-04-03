@@ -70,7 +70,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "3e5a58d50a9d53d2afa41999b37d19847a6192c3"
+      resolved-ref: "453cbaf350f8dcd6f5caa13737e5b521c82ecfdb"
       url: "https://github.com/noroshii-main/mapbox-gl-language-dart.git"
     source: git
     version: "1.0.0"
