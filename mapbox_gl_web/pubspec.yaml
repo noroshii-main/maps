@@ -20,9 +20,16 @@ dependencies:
     git:
       url: https://github.com/noroshii-main/maps.git
       path: mapbox_gl_platform_interface
-  mapbox_gl_dart:
+  # mapbox_gl_language_dart も mapbox_gl_dartに依存していて、依存解決に失敗するらしい
+  # なんとかしたい
+  # mapbox_gl_dart:
+  #   git:
+  #     url: https://github.com/noroshii-main/mapbox-gl-dart.git
+  #     ref: master
+  mapbox_gl_language_dart:
     git:
-      url: https://github.com/noroshii-main/mapbox-gl-dart.git
+      url: https://github.com/noroshii-main/mapbox-gl-language-dart.git
+      ref: main
   image: ^3.0.0
 
 dependency_overrides:
@@ -35,4 +42,5 @@ dev_dependencies:
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
+
   flutter: ">=2.0.0"
