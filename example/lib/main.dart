@@ -14,6 +14,8 @@ import 'package:mapbox_gl_example/place_batch.dart';
 import 'package:mapbox_gl_example/layer.dart';
 import 'package:mapbox_gl_example/sources.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:mapbox_gl/mapbox_gl.dart';
+import 'package:mapbox_gl_example/set_language.dart';
 
 import 'animate_camera.dart';
 import 'annotation_order_maps.dart';
@@ -49,7 +51,8 @@ final List<ExamplePage> _allPages = <ExamplePage>[
   CustomMarkerPage(),
   BatchAddPage(),
   ClickAnnotationPage(),
-  Sources()
+  Sources(),
+  SetLanguagePage()
 ];
 
 class MapsDemo extends StatefulWidget {
