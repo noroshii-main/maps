@@ -71,7 +71,16 @@ Include the JavaScript and CSS files in the `<head>` of your `index.html` file:
 
 ```
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.js'></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-language/v1.0.0/mapbox-gl-language.js"></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v2.7.0/mapbox-gl.css' rel='stylesheet' />
+
+<style>
+   .mapboxgl-map {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+</style>
 ```
 
 *Note: Look for latest version in [Mapbox GL JS documentation](https://docs.mapbox.com/mapbox-gl-js/guides/).*
@@ -109,29 +118,29 @@ MapboxMap(
 
 ## Supported API
 
-| Feature | Android | iOS | Web |
-| ------ | ------ | ----- | ----- |
-| Style | :white_check_mark:   | :white_check_mark: | :white_check_mark: |
-| Camera | :white_check_mark:   | :white_check_mark: | :white_check_mark: |
-| Gesture | :white_check_mark:   | :white_check_mark: | :white_check_mark: |
-| User Location | :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Style DSL   | :x:  | :x:  | :x:  |
-| Raster Layer  | :white_check_mark:  | :white_check_mark:  | :white_check_mark: | 
-| Symbol Layer | :white_check_mark:   | :white_check_mark: | :white_check_mark: |
-| Circle Layer | :white_check_mark:   | :white_check_mark: | :white_check_mark: |
-| Line Layer | :white_check_mark:   | :white_check_mark: | :white_check_mark: |
-| Fill Layer | :white_check_mark:   | :white_check_mark: | :white_check_mark: |
-| Hillshade Layer | :white_check_mark:   | :white_check_mark: | :white_check_mark: |
-| Heatmap Layer   | :x:  | :x:  | :x:  |
-| Vector Source   |  :white_check_mark:  | :white_check_mark:  | :white_check_mark:  |
-| Raster Source  |  :white_check_mark:  | :white_check_mark:  | :white_check_mark:  |
-| GeoJson Source  | :white_check_mark:   | :white_check_mark: | :white_check_mark: |
-| Image Source   | :white_check_mark:   | :white_check_mark: | :white_check_mark: |
-| Expressions   |  :white_check_mark:   | :white_check_mark: | :white_check_mark: |
-| Symbol Annotation | :white_check_mark:   | :white_check_mark: | :white_check_mark: |
-| Circle Annotation | :white_check_mark:   | :white_check_mark: | :white_check_mark: |
-| Line Annotation | :white_check_mark:   | :white_check_mark: | :white_check_mark: |
-| Fill Annotation | :white_check_mark:   | :white_check_mark: | :white_check_mark: |
+| Feature           | Android            | iOS                | Web                |
+| ----------------- | ------------------ | ------------------ | ------------------ |
+| Style             | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Camera            | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Gesture           | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| User Location     | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Style DSL         | :x:                | :x:                | :x:                |
+| Raster Layer      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Symbol Layer      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Circle Layer      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Line Layer        | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Fill Layer        | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Hillshade Layer   | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Heatmap Layer     | :x:                | :x:                | :x:                |
+| Vector Source     | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Raster Source     | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| GeoJson Source    | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Image Source      | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Expressions       | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Symbol Annotation | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Circle Annotation | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Line Annotation   | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Fill Annotation   | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
 ## Map Styles
 
