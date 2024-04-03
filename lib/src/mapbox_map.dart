@@ -12,6 +12,7 @@ class MapboxMap extends StatefulWidget {
   const MapboxMap({
     Key? key,
     required this.initialCameraPosition,
+    this.initialMapLanguage,
     this.accessToken,
     this.onMapCreated,
     this.onStyleLoadedCallback,
@@ -88,6 +89,9 @@ class MapboxMap extends StatefulWidget {
 
   /// The initial position of the map's camera.
   final CameraPosition initialCameraPosition;
+
+  /// The initial language of the map.
+  final String? initialMapLanguage;
 
   /// True if the map should show a compass when rotated.
   final bool compassEnabled;
@@ -313,6 +317,8 @@ class _MapboxMapState extends State<MapboxMap> {
       annotationConsumeTapEvents: widget.annotationConsumeTapEvents,
     );
     await _mapboxGlPlatform.initPlatform(id);
+    await _mapboxGlPlatform
+        .initialMapLanguage(widget.initialMapLanguage ?? "en");
     _controller.complete(controller);
     if (widget.onMapCreated != null) {
       widget.onMapCreated!(controller);
