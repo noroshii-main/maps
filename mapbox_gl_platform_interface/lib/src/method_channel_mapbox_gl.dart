@@ -678,4 +678,8 @@ class MethodChannelMapboxGl extends MapboxGlPlatform {
       'geojsonFeature': jsonEncode(geojsonFeature)
     });
   }
+
+  Future<void> triggerRepaint() async {
+    await _channel.invokeMethod('map#triggerRepaint', {});
+  }
 }

@@ -1230,6 +1230,10 @@ class MapboxMapController extends ChangeNotifier {
     }
   }
 
+  Future<void> triggerRepaint() async {
+    await _mapboxGlPlatform.triggerRepaint();
+  }
+
   @override
   void dispose() {
     super.dispose();

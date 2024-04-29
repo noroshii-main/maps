@@ -159,6 +159,8 @@ abstract class MapboxGlPlatform {
 
   Future<void> addSource(String sourceId, SourceProperties properties);
 
+  Future<void> triggerRepaint();
+
   @mustCallSuper
   void dispose() {
     // clear all callbacks to avoid cyclic refs

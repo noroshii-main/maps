@@ -965,4 +965,9 @@ class MapboxWebGlPlatform extends MapboxGlPlatform
       }
     }
   }
+
+  @override
+  Future<void> triggerRepaint() async {
+    await _map.triggerRepaint();
+  }
 }
