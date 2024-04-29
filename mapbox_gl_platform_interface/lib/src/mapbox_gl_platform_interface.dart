@@ -74,7 +74,7 @@ abstract class MapboxGlPlatform {
 
   Future<LatLngBounds> getVisibleRegion();
 
-  Future<void> addImage(String name, Uint8List bytes, [bool sdf = false]);
+  Future<void> addImage(String name, dynamic image, [Map<String, dynamic>? options]);
 
   Future<void> addImageSource(
       String imageSourceId, Uint8List bytes, LatLngQuad coordinates);
@@ -158,6 +158,8 @@ abstract class MapboxGlPlatform {
       double? maxzoom});
 
   Future<void> addSource(String sourceId, SourceProperties properties);
+
+  Future<void> triggerRepaint();
 
   @mustCallSuper
   void dispose() {

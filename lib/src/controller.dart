@@ -1039,8 +1039,13 @@ class MapboxMapController extends ChangeNotifier {
   ///  );
   /// }
   /// ```
-  Future<void> addImage(String name, Uint8List bytes, [bool sdf = false]) {
-    return _mapboxGlPlatform.addImage(name, bytes, sdf);
+  Future<void> addImage(String name, dynamic image,
+      [Map<String, dynamic>? options]) {
+    if (options == null) {
+      return _mapboxGlPlatform.addImage(name, image);
+    } else {
+      return _mapboxGlPlatform.addImage(name, image, options);
+    }
   }
 
   /// For more information on what this does, see https://docs.mapbox.com/help/troubleshooting/optimize-map-label-placement/#label-collision
@@ -1223,6 +1228,10 @@ class MapboxMapController extends ChangeNotifier {
     } else {
       throw UnimplementedError("Unknown layer type $properties");
     }
+  }
+
+  Future<void> triggerRepaint() async {
+    await _mapboxGlPlatform.triggerRepaint();
   }
 
   @override

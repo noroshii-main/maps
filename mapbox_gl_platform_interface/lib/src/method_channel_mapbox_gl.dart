@@ -361,15 +361,9 @@ class MethodChannelMapboxGl extends MapboxGlPlatform {
   }
 
   @override
-  Future<void> addImage(String name, Uint8List bytes,
-      [bool sdf = false]) async {
+  Future<void> addImage(String name, dynamic image, [Map<String, dynamic>? options]) async {
     try {
-      return await _channel.invokeMethod('style#addImage', <String, Object>{
-        'name': name,
-        'bytes': bytes,
-        'length': bytes.length,
-        'sdf': sdf
-      });
+      await _channel.invokeMethod('style#addImage', image);
     } on PlatformException catch (e) {
       return new Future.error(e);
     }
@@ -683,5 +677,9 @@ class MethodChannelMapboxGl extends MapboxGlPlatform {
       'sourceId': sourceId,
       'geojsonFeature': jsonEncode(geojsonFeature)
     });
+  }
+
+  Future<void> triggerRepaint() async {
+    await _channel.invokeMethod('map#triggerRepaint', {});
   }
 }

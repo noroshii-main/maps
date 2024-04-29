@@ -311,19 +311,28 @@ class MapboxWebGlPlatform extends MapboxGlPlatform
   }
 
   @override
-  Future<void> addImage(String name, Uint8List bytes,
-      [bool sdf = false]) async {
-    final photo = decodeImage(bytes)!;
+  Future<void> addImage(String name, dynamic image, [Map<String, dynamic>? options]) async {
     if (!_map.hasImage(name)) {
-      _map.addImage(
-        name,
-        {
-          'width': photo.width,
-          'height': photo.height,
-          'data': photo.getBytes(),
-        },
-        {'sdf': sdf},
-      );
+      if (image is Uint8List) {
+        final photo = decodeImage(image)!;
+        if (!_map.hasImage(name)) {
+          _map.addImage(
+            name,
+            {
+              'width': photo.width,
+              'height': photo.height,
+              'data': photo.getBytes(),
+            },
+            options ?? {'sdf': false}
+          );
+        }
+      } else {
+        _map.addImage(
+          name,
+          image,
+          options ?? {}
+        );
+      }
     }
   }
 
@@ -955,5 +964,10 @@ class MapboxWebGlPlatform extends MapboxGlPlatform
         source.setData(newData);
       }
     }
+  }
+
+  @override
+  Future<void> triggerRepaint() async {
+    await _map.triggerRepaint();
   }
 }
