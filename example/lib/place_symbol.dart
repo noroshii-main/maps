@@ -6,6 +6,7 @@ import 'dart:async'; // ignore: unnecessary_import
 import 'dart:core';
 import 'dart:math';
 import 'dart:typed_data';
+import 'dart:html' as html;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +15,34 @@ import 'package:mapbox_gl/mapbox_gl.dart';
 
 import 'main.dart';
 import 'page.dart';
+
+class StyleImage {
+  final int width;
+  final int height;
+  var data;
+  var render;
+
+  StyleImage({required this.width, required this.height, required callback}) {
+    const size = 200;
+    final canvas = html.CanvasElement(width: size, height: size);
+    final context = canvas.context2D;
+    data = Uint8ClampedList(size * size * 4);
+
+    render = () {
+      const duration = 1000;
+      final t = (DateTime.now().millisecondsSinceEpoch % duration) / duration;
+
+      context.fillStyle = 'rgba(${255 * t}, 100, 100, 1)';
+      context.fillRect(0, 0, size, size);
+      // Update this image's data with data from the canvas.
+      data = context.getImageData(0, 0, size, size).data;
+      // Continuously repaint the map, resulting
+      // in the smooth animation of the dot.
+      callback();
+      return true;
+    };
+  }
+}
 
 class PlaceSymbolPage extends ExamplePage {
   PlaceSymbolPage() : super(const Icon(Icons.place), 'Place symbol');
@@ -50,6 +79,7 @@ class PlaceSymbolBodyState extends State<PlaceSymbolBody> {
     addImageFromAsset("assetImage", "assets/symbols/custom-icon.png");
     addImageFromUrl(
         "networkImage", Uri.parse("https://via.placeholder.com/50"));
+    controller!.addImage("dynamic", StyleImage(width: 200, height: 200, callback: controller!.triggerRepaint));
   }
 
   @override
@@ -357,6 +387,11 @@ class PlaceSymbolBodyState extends State<PlaceSymbolBody> {
                           child: const Text('add (custom font)'),
                           onPressed: () =>
                               (_symbolCount == 12) ? null : _add("customFont"),
+                        ),
+                        TextButton(
+                          child: const Text('add (dynamic symbol)'),
+                          onPressed: () =>
+                              (_symbolCount == 12) ? null : _add("dynamic"),
                         )
                       ],
                     ),
