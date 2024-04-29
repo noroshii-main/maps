@@ -74,7 +74,7 @@ abstract class MapboxGlPlatform {
 
   Future<LatLngBounds> getVisibleRegion();
 
-  Future<void> addImage(String name, Uint8List bytes, [bool sdf = false]);
+  Future<void> addImage(String name, dynamic image, [Map<String, dynamic>? options]);
 
   Future<void> addImageSource(
       String imageSourceId, Uint8List bytes, LatLngQuad coordinates);
